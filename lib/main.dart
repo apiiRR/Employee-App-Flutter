@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'presentation/routes/page_routes.dart';
-import 'presentation/screens/employee_screen/employee_screen.dart';
+import 'presentation/screens/login_screen/login_screen.dart';
+import 'presentation/view_model/auth_view_model.dart';
 import 'presentation/view_model/employee_view_model.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => AuthViewModel()),
         ChangeNotifierProvider(create: (context) => EmployeeViewModel()),
       ],
       builder: (context, child) => MaterialApp(
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         routes: AppPage.pages,
-        home: const EmployeeScreen(),
+        home: const LoginScreen(),
       ),
     );
   }
