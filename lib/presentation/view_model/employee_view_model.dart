@@ -48,4 +48,22 @@ class EmployeeViewModel extends ChangeNotifier {
       return throw Exception("Error $error");
     }
   }
+
+  Future addData(EmployeeModel employee) async {
+    changeState(EmployeeViewState.loading);
+
+    try {
+      Response response = await EmployeeAPI.addData(employee.toJson());
+      if (response.statusCode != 201) return;
+
+      Map<String, dynamic> dataResponse = response.data as Map<String, dynamic>;
+      _datas!.add(EmployeeModel.fromJson(dataResponse));
+
+      notifyListeners();
+      changeState(EmployeeViewState.none);
+    } catch (error) {
+      changeState(EmployeeViewState.error);
+      return throw Exception("Error $error");
+    }
+  }
 }

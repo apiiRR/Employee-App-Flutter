@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'build_input_field.dart';
 
-class Body extends StatefulWidget {
-  const Body({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key, required this.formKey});
+  final Key formKey;
 
-  @override
-  State<Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
-  final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,13 +32,18 @@ class _BodyState extends State<Body> {
             height: 24,
           ),
           FormBuilder(
-              key: _formKey,
+              key: formKey,
               child: Column(
                 children: [
                   BuildInputField(
                     size: size,
                     label: "Email",
                     icon: Icons.email,
+                    name: "email",
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.email(),
+                    ]),
                   ),
                   const SizedBox(
                     height: 16,
@@ -51,6 +52,8 @@ class _BodyState extends State<Body> {
                     size: size,
                     label: "First Name",
                     icon: Icons.person,
+                    name: "first_name",
+                    validator: FormBuilderValidators.required(),
                   ),
                   const SizedBox(
                     height: 16,
@@ -59,6 +62,8 @@ class _BodyState extends State<Body> {
                     size: size,
                     label: "Last Name",
                     icon: Icons.person,
+                    name: "last_name",
+                    validator: FormBuilderValidators.required(),
                   )
                 ],
               ))

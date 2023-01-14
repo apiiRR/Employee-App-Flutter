@@ -12,4 +12,7 @@ class EmployeeModel {
       email: json["email"].toString(),
       firstName: json["first_name"].toString(),
       lastName: json["last_name"].toString());
+
+  Map toJson() =>
+      {"first_name": firstName, "last_name": lastName, "email": email};
 }
