@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../view_model/employee_view_model.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final EmployeeViewModel employeeViewModel =
+        Provider.of<EmployeeViewModel>(context);
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -25,9 +30,9 @@ class Body extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const Text(
-                "Rafi Ramadhana",
-                style: TextStyle(color: Colors.white, fontSize: 32),
+              Text(
+                "${employeeViewModel.selectedData!.firstName} ${employeeViewModel.selectedData!.lastName}",
+                style: const TextStyle(color: Colors.white, fontSize: 32),
               )
             ],
           ),
@@ -60,9 +65,9 @@ class Body extends StatelessWidget {
               Expanded(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("rafiramadhanadev@gmail.com"),
-                  Text(
+                children: [
+                  Text(employeeViewModel.selectedData!.email),
+                  const Text(
                     "E-mail",
                     style: TextStyle(fontWeight: FontWeight.w300),
                   ),
