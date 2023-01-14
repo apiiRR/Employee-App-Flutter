@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'presentation/routes/page_routes.dart';
 import 'presentation/screens/employee_screen/employee_screen.dart';
+import 'presentation/view_model/employee_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +13,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => EmployeeViewModel()),
+      ],
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: AppPage.pages,
+        home: const EmployeeScreen(),
       ),
-      routes: AppPage.pages,
-      home: const EmployeeScreen(),
     );
   }
 }
