@@ -1,6 +1,5 @@
+import 'package:employee_app/presentation/screens/add_employee_screen/add_employe_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'presentation/screens/contact_screen/contact_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ContactScreen(),
+      home: const AddEmployeeScreen(),
     );
   }
 }
