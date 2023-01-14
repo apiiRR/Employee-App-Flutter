@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../routes/route_names.dart';
+
 class Body extends StatelessWidget {
   const Body({super.key});
 
@@ -7,8 +9,12 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: 10,
-        itemBuilder: (context, index) => const ListTile(
-              leading: CircleAvatar(
+        itemBuilder: (context, index) => ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.detailEmployeeScreen);
+              },
+              leading: const CircleAvatar(
+                backgroundColor: Colors.purple,
                 child: Text("R"),
               ),
               title: Text("Rafi Ramadhana"),

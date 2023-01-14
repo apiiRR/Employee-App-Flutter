@@ -8,6 +8,7 @@ class AddEmployeeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.purple,
           title: const Text("Add Employee"),
           centerTitle: false,
           leading: IconButton(

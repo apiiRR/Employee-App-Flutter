@@ -1,5 +1,6 @@
-import 'package:employee_app/presentation/screens/detail_employee_screen/detail_employee_screen.dart';
 import 'package:flutter/material.dart';
+import 'presentation/routes/page_routes.dart';
+import 'presentation/screens/employee_screen/employee_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const DetailEmployeeScreen(),
+      routes: AppPage.pages,
+      home: const EmployeeScreen(),
     );
   }
 }

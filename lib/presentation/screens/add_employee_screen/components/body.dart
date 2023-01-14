@@ -23,10 +23,12 @@ class _BodyState extends State<Body> {
           ),
           const Center(
             child: CircleAvatar(
+              backgroundColor: Colors.purple,
               radius: 64,
               child: Icon(
                 Icons.camera_alt_rounded,
                 size: 48,
+                color: Colors.white,
               ),
             ),
           ),
