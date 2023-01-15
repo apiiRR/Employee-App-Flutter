@@ -35,7 +35,11 @@ class _BodyState extends State<Body> {
       );
     }
 
-    if (isError) {}
+    if (isError) {
+      return const Center(
+        child: Text("Error"),
+      );
+    }
 
     if (employeeViewModel.datas != null &&
         employeeViewModel.datas!.isNotEmpty) {
@@ -59,7 +63,9 @@ class _BodyState extends State<Body> {
                 subtitle: Text(employeeViewModel.datas![index].email),
               ));
     } else {
-      return Container();
+      return const Center(
+        child: Text("Data Empty"),
+      );
     }
   }
 }

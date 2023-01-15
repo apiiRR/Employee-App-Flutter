@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../routes/route_names.dart';
+import '../../view_model/auth_view_model.dart';
 import 'components/body.dart';
 
 class EmployeeScreen extends StatelessWidget {
@@ -11,6 +13,15 @@ class EmployeeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Employee"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Provider.of<AuthViewModel>(context, listen: false).logOut();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, RouteNames.loginScreen, (route) => false);
+              },
+              icon: const Icon(Icons.logout_rounded))
+        ],
         centerTitle: false,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.purple,

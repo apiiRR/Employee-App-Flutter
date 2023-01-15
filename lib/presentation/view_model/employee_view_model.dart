@@ -21,7 +21,7 @@ class EmployeeViewModel extends ChangeNotifier {
   EmployeeModel? _selectedData;
   EmployeeModel? get selectedData => _selectedData;
 
-  set detailData(EmployeeModel data) {
+  set detailData(EmployeeModel? data) {
     _selectedData = data;
   }
 
